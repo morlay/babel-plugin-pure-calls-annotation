@@ -27,6 +27,10 @@ const B = /*#__PURE__*/String("b");`,
   title: "Annotated #__PURE__ for IIFE",
   src: `export const A = (() => "a")();`,
   dest: `export const A = /*#__PURE__*/(() => "a")();`,
+}, {
+  title: "Annotated #__PURE__ for import()",
+  src: `export const A = import("")`,
+  dest: `export const A = /*#__PURE__*/import("");`,
 }]
 
 function unPad(str: string) {

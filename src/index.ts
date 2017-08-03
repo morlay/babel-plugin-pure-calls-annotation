@@ -1,3 +1,4 @@
+import * as syntax from "babel-plugin-syntax-dynamic-import"
 import {
   Node,
   NodePath,
@@ -25,9 +26,10 @@ const createComponentBlock = (value: string): Comment => ({
 }) as CommentBlock
 
 export default () => ({
+  inherits: syntax,
   visitor: {
     CallExpression: {
-      exit(nodePath: NodePath<Node>) {
+      enter(nodePath: NodePath<Node>) {
         if (nodePath.parentPath.isVariableDeclarator()) {
           if (!isPureAnnotated(nodePath.node.leadingComments)) {
             const pureAnnotation = createComponentBlock(PURE_ANNOTATION)
