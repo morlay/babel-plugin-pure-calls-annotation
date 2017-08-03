@@ -24,19 +24,19 @@ const createComponentBlock = (value: string): Comment => ({
   value,
 }) as CommentBlock
 
-const pureAnnotationComments = createComponentBlock(PURE_ANNOTATION)
-
 export default () => ({
   visitor: {
     CallExpression: {
       exit(nodePath: NodePath<Node>) {
         if (nodePath.parentPath.isVariableDeclarator()) {
           if (!isPureAnnotated(nodePath.node.leadingComments)) {
+            const pureAnnotation = createComponentBlock(PURE_ANNOTATION)
+
             nodePath.replaceWith({
               ...nodePath.node,
               leadingComments: nodePath.node.leadingComments
-                ? nodePath.node.leadingComments.concat(pureAnnotationComments)
-                : [pureAnnotationComments],
+                ? nodePath.node.leadingComments.concat(pureAnnotation)
+                : [pureAnnotation],
             })
           }
         }

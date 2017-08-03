@@ -6,6 +6,12 @@ const cases = [{
   src: `const A = String("a");`,
   dest: `const A = /*#__PURE__*/String("a");`,
 }, {
+  title: "Annotated #__PURE__ multiline",
+  src: `const A = String("a");
+const B = String("b");`,
+  dest: `const A = /*#__PURE__*/String("a");
+const B = /*#__PURE__*/String("b");`,
+}, {
   title: "Skip annotated #__PURE__ when already have",
   src: `const A = /*#__PURE__*/String("a");`,
   dest: `const A = /*#__PURE__*/String("a");`,
@@ -29,7 +35,7 @@ function unPad(str: string) {
 
 describe("test cases", () => {
   cases.forEach((caseItem) => {
-    it(caseItem.title, () => {
+    ((caseItem as any).only ? it.only : it)(caseItem.title, () => {
       const code = transform(caseItem.src, {
         plugins: [
           pluginAnnotatePureCallInVariableDeclarator,
