@@ -1,0 +1,64 @@
+{
+  "name": "babel-plugin-annotate-pure-call-in-variable-declarator",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "types": "src/index.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "license": "WTFPL",
+  "author": "Morlay Null <morlay.null@gmail.com>",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "json",
+      "jsx",
+      "js"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.es6"
+    },
+    "testRegex": ".*/__tests__/.+\\.(test|spec)\\.(ts|tsx)$"
+  },
+  "scripts": {
+    "lint": "tslint -c tslint.json \"src/{,**/}{,**/}/*.ts{,x}\"",
+    "jest": "jest",
+    "build": "tsc",
+    "test": "npm run lint && jest",
+    "prepublish": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/jest": "20.0.x",
+    "@types/babel-core": "6.25.0",
+    "jest": "20.0.x",
+    "ts-jest": "20.0.7",
+    "ts-node": "3.3.0",
+    "tslint": "5.5.0",
+    "babel-core": "6.25.0",
+    "typescript": "2.4.2"
+  },
+  "dependencies": {
+    "@types/babel-traverse": "6.25.0",
+    "babel-traverse": "6.25.0"
+  },
+  "description": "Automated annotate **#__PURE__** to call expression which in variable declarator",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator/issues"
+  },
+  "homepage": "https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator#readme"
+}
