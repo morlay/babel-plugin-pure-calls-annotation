@@ -1,5 +1,10 @@
 ## babel-plugin-annotate-pure-call-in-variable-declarator
 
+[![Build Status](https://img.shields.io/travis/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://travis-ci.org/morlay/babel-plugin-annotate-pure-call-in-variable-declarator)
+[![NPM](https://img.shields.io/npm/v/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-annotate-pure-call-in-variable-declarator)
+[![Dependencies](https://img.shields.io/david/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-annotate-pure-call-in-variable-declarator)
+[![License](https://img.shields.io/npm/l/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-annotate-pure-call-in-variable-declarator)
+
 Automated annotate **#__PURE__** to call expression which in variable declarator and assignment expression
 
 ### Purpose
