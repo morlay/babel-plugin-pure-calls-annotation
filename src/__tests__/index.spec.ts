@@ -6,6 +6,10 @@ const cases = [{
   src: `const A = String("a");`,
   dest: `const A = /*#__PURE__*/String("a");`,
 }, {
+  title: "Annotated #__PURE__ in assignment expression",
+  src: `A = String("a");`,
+  dest: `A = /*#__PURE__*/String("a");`,
+}, {
   title: "Annotated #__PURE__ multiline",
   src: `const A = String("a");
 const B = String("b");`,

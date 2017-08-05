@@ -1,6 +1,6 @@
 ## babel-plugin-annotate-pure-call-in-variable-declarator
 
-Automated annotate **#__PURE__** to call expression which in variable declarator
+Automated annotate **#__PURE__** to call expression which in variable declarator and assignment expression
 
 ### Purpose
 

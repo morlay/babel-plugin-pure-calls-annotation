@@ -30,7 +30,7 @@ export default () => ({
   visitor: {
     CallExpression: {
       enter(nodePath: NodePath<Node>) {
-        if (nodePath.parentPath.isVariableDeclarator()) {
+        if (nodePath.parentPath.isVariableDeclarator() || nodePath.parentPath.isAssignmentExpression()) {
           if (!isPureAnnotated(nodePath.node.leadingComments)) {
             const pureAnnotation = createComponentBlock(PURE_ANNOTATION)
 

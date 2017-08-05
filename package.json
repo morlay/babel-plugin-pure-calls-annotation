@@ -23,9 +23,6 @@
     "modulePaths": [
       "<rootDir>"
     ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.es6"
-    },
     "testRegex": ".*/__tests__/.+\\.(test|spec)\\.(ts|tsx)$"
   },
   "scripts": {
@@ -50,10 +47,6 @@
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-traverse": "6.25.0"
   },
-  "description": "Automated annotate **#__PURE__** to call expression which in variable declarator",
-  "directories": {
-    "lib": "lib"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.git"
@@ -61,5 +54,6 @@
   "bugs": {
     "url": "https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator/issues"
   },
-  "homepage": "https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator#readme"
+  "homepage": "https://github.com/morlay/babel-plugin-annotate-pure-call-in-variable-declarator#readme",
+  "description": "Automated annotate **#__PURE__** to call expression which in variable declarator and assignment expression"
 }
