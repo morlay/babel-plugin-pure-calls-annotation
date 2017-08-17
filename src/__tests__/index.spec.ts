@@ -1,7 +1,8 @@
 import { transform } from "babel-core"
 import pluginAnnotatePureCallInVariableDeclarator from "../"
 
-const cases = [{
+const cases = [
+{
   title: "Annotated #__PURE__",
   src: `const A = String("a");`,
   dest: `const A = /*#__PURE__*/String("a");`,
@@ -20,7 +21,6 @@ const B = /*#__PURE__*/String("b");`,
   src: `fn();`,
   dest: `fn();`,
 }, {
-  // only: true,
   title: "Skip #__PURE__ for side effect fn()()()",
   src: `fn()()();`,
   dest: `fn()()();`,
@@ -48,6 +48,34 @@ const B = /*#__PURE__*/String("b");`,
   title: "Annotated #__PURE__ for fn(fn())",
   src: `export const A = fn(fn())`,
   dest: `export const A = /*#__PURE__*/fn( /*#__PURE__*/fn());`,
+}, {
+  title: "Annotate only top level calls",
+  src: `export const A = () => { var B = call(); };`,
+  dest: `export const A = () => {
+  var B = call();
+};`,
+}, {
+  title: "Treat calls in top level IIFEs as top level calls",
+  src: `export const A = (() => { var B = call(); })()`,
+  dest: `export const A = /*#__PURE__*/(() => {
+  var B = /*#__PURE__*/call();
+})();`,
+}, {
+  title: "Skip annotating non-top level IIFEs",
+  src: `const A = () => { var B = (() => { var C = call() })(); };`,
+  dest: `const A = () => {
+  var B = (() => {
+    var C = call();
+  })();
+};`,
+}, {
+  title: "Treat nested IIFEs as top level ones",
+  src: `const A = (() => { var B = (() => { var C = call() })(); })();`,
+  dest: `const A = /*#__PURE__*/(() => {
+  var B = /*#__PURE__*/(() => {
+    var C = /*#__PURE__*/call();
+  })();
+})();`,
 }]
 
 function unPad(str: string) {
