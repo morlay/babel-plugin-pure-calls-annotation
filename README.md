@@ -5,7 +5,8 @@
 [![Dependencies](https://img.shields.io/david/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-annotate-pure-call-in-variable-declarator)
 [![License](https://img.shields.io/npm/l/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-annotate-pure-call-in-variable-declarator)
 
-Automated annotate **#__PURE__** to call expression which in variable declarator and assignment expression
+Automated annotate **#__PURE__** to call expression which in **variable declarator**, 
+**assignment expression** and **arguments of call expression**
 
 ### Purpose
 

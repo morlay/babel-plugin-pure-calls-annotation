@@ -35,6 +35,10 @@ const B = /*#__PURE__*/String("b");`,
   title: "Annotated #__PURE__ for import()",
   src: `export const A = import("")`,
   dest: `export const A = /*#__PURE__*/import("");`,
+}, {
+  title: "Annotated #__PURE__ for fn(fn())",
+  src: `export const A = fn(fn())`,
+  dest: `export const A = /*#__PURE__*/fn( /*#__PURE__*/fn());`,
 }]
 
 function unPad(str: string) {
