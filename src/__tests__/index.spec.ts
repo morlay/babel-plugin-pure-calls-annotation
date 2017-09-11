@@ -16,6 +16,15 @@ const B = String("b");`,
   dest: `const A = /*#__PURE__*/String("a");
 const B = /*#__PURE__*/String("b");`,
 }, {
+  title: "Skip #__PURE__ for side effect fn()",
+  src: `fn();`,
+  dest: `fn();`,
+}, {
+  // only: true,
+  title: "Skip #__PURE__ for side effect fn()()()",
+  src: `fn()()();`,
+  dest: `fn()()();`,
+}, {
   title: "Skip annotated #__PURE__ when already have",
   src: `const A = /*#__PURE__*/String("a");`,
   dest: `const A = /*#__PURE__*/String("a");`,

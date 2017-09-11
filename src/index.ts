@@ -32,7 +32,8 @@ export default () => ({
       enter(nodePath: NodePath<Node>) {
         if (nodePath.parentPath.isVariableDeclarator()
           || nodePath.parentPath.isAssignmentExpression()
-          || nodePath.parentPath.isCallExpression()) {
+          || (nodePath.parentPath.isCallExpression()) && ((nodePath.parentPath.get(
+            "arguments") as any) || [] as NodePath[]).indexOf(nodePath) > -1) {
           if (!isPureAnnotated(nodePath.node.leadingComments)) {
             const pureAnnotation = createComponentBlock(PURE_ANNOTATION)
 
