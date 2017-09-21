@@ -8,44 +8,63 @@ import {
   CommentBlock,
 } from "babel-types"
 
-const PURE_ANNOTATION = "#__PURE__"
-
-const isPureAnnotated = (comments?: Comment[]): boolean => {
-  if (typeof comments === "undefined") {
-    return false
-  }
-  if (comments.length > 0) {
-    return comments[comments.length - 1].value === PURE_ANNOTATION
-  }
-  return false
-}
-
-const createComponentBlock = (value: string): Comment => ({
+const createCommentBlock = (value: string): Comment => ({
   type: "CommentBlock",
   value,
 }) as CommentBlock
 
+const PURE_ANNOTATION = "#__PURE__"
+
+const isPureAnnotated = (nodePath: NodePath<Node>): boolean => {
+  const { leadingComments } = nodePath.node
+
+  if (leadingComments === undefined) {
+    return false
+  }
+
+  return /[@#]__PURE__/.test(leadingComments[leadingComments.length - 1].value)
+}
+
+const annotateAsPure = (nodePath: NodePath<Node>) => {
+  if (isPureAnnotated(nodePath)) {
+    return;
+  }
+
+  const node = nodePath.node;
+  node.leadingComments = (node.leadingComments || []).concat(createCommentBlock(PURE_ANNOTATION))
+}
+
+const isTopLevel = (nodePath: NodePath<Node>): boolean => {
+  return nodePath.getStatementParent().parentPath.isProgram()
+}
+
 export default () => ({
   inherits: syntax,
   visitor: {
-    CallExpression: {
-      enter(nodePath: NodePath<Node>) {
-        if (nodePath.parentPath.isVariableDeclarator()
-          || nodePath.parentPath.isAssignmentExpression()
-          || (nodePath.parentPath.isCallExpression()) && ((nodePath.parentPath.get(
-            "arguments") as any) || [] as NodePath[]).indexOf(nodePath) > -1) {
-          if (!isPureAnnotated(nodePath.node.leadingComments)) {
-            const pureAnnotation = createComponentBlock(PURE_ANNOTATION)
+    CallExpression(nodePath: NodePath<Node>) {
+      if (!isTopLevel(nodePath)) {
+        let functionParent
 
-            nodePath.replaceWith({
-              ...nodePath.node,
-              leadingComments: nodePath.node.leadingComments
-                ? nodePath.node.leadingComments.concat(pureAnnotation)
-                : [pureAnnotation],
-            })
+        do {
+          functionParent = (functionParent || nodePath).getFunctionParent()
+
+          if (!functionParent.parentPath.isCallExpression()) {
+            return
           }
+        } while (!isTopLevel(functionParent))
+      }
+
+      const statement = nodePath.getStatementParent()
+      let parentPath
+
+      do {
+        ({ parentPath } = parentPath || nodePath)
+
+        if (parentPath.isVariableDeclaration() || parentPath.isAssignmentExpression()) {
+          annotateAsPure(nodePath)
+          return
         }
-      },
+      } while (parentPath !== statement)
     },
   },
 })

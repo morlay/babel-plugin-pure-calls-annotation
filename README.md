@@ -5,13 +5,11 @@
 [![Dependencies](https://img.shields.io/david/morlay/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-annotate-pure-call-in-variable-declarator)
 [![License](https://img.shields.io/npm/l/babel-plugin-annotate-pure-call-in-variable-declarator.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-annotate-pure-call-in-variable-declarator)
 
-Automated annotate **#__PURE__** to call expression which in **variable declarator**, 
-**assignment expression** and **arguments of call expression**
+Automated annotating with **#__PURE__** comment to call expressions in assignment contexts.
 
 ### Purpose
 
-help to annotate **#__PURE__** to drop dead code in [Webpack](https://github.com/webpack/webpack) 
-for uglyfiy and tree shaking
+Help to annotate with **#__PURE__** in order to drop dead code when using [UglifyJS](https://github.com/mishoo/UglifyJS2).
 
 
 Will transform
