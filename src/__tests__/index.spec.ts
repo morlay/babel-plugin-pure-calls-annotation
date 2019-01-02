@@ -1,4 +1,4 @@
-import { transform } from "babel-core";
+import { transform } from "@babel/core";
 import pluginAnnotatePureCallInVariableDeclarator from "../";
 
 const cases = [
@@ -69,10 +69,14 @@ function unPad(str: string) {
 describe("test cases", () => {
   cases.forEach((caseItem) => {
     ((caseItem as any).only ? it.only : it)(caseItem.title, () => {
-      const code = transform(caseItem.src, {
+      const src = transform(caseItem.src, {
         plugins: [pluginAnnotatePureCallInVariableDeclarator],
-      }).code;
-      expect(unPad(code || "")).toEqual(unPad(caseItem.dest));
+      })!.code;
+
+      const dest = transform(caseItem.dest, {
+        plugins: ["@babel/plugin-syntax-dynamic-import"],
+      })!.code;
+      expect(unPad(src || "")).toEqual(unPad(dest || ""));
     });
   });
 });

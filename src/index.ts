@@ -1,14 +1,13 @@
-import * as syntax from "babel-plugin-syntax-dynamic-import";
-import { Node, NodePath } from "babel-traverse";
-import { Comment, CommentBlock } from "babel-types";
+import { NodePath } from "@babel/traverse";
+import { CallExpression, Comment, CommentBlock } from "@babel/types";
 
 const PURE_ANNOTATION = "#__PURE__";
 
-const isPureAnnotated = (comments?: Comment[]): boolean => {
+const isPureAnnotated = (comments: ReadonlyArray<Comment> | null): boolean => {
   if (typeof comments === "undefined") {
     return false;
   }
-  if (comments.length > 0) {
+  if (comments && comments.length > 0) {
     return comments[comments.length - 1].value === PURE_ANNOTATION;
   }
   return false;
@@ -21,10 +20,11 @@ const createComponentBlock = (value: string): Comment =>
   } as CommentBlock);
 
 export default () => ({
-  inherits: syntax,
+  name: "pure-calls-annotation",
+  inherits: require("@babel/plugin-syntax-dynamic-import").default,
   visitor: {
     CallExpression: {
-      enter(nodePath: NodePath<Node>) {
+      enter(nodePath: NodePath<CallExpression>) {
         if (
           nodePath.parentPath.isVariableDeclarator() ||
           nodePath.parentPath.isAssignmentExpression() ||
@@ -42,7 +42,7 @@ export default () => ({
               leadingComments: nodePath.node.leadingComments
                 ? nodePath.node.leadingComments.concat(pureAnnotation)
                 : [pureAnnotation],
-            });
+            } as any);
           }
         }
       },
