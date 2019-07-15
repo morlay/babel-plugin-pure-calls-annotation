@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pure-calls-annotation",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "lib/index.js",
   "types": "src/index.ts",
   "files": [
@@ -16,21 +16,22 @@
     "prepare": "npm test && npm run build"
   },
   "devDependencies": {
-    "@babel/core": "7.4.5",
-    "@types/babel__core": "7.1.2",
-    "@types/jest": "24.0.15",
-    "@types/node": "12.0.8",
-    "jest": "24.8.0",
-    "prettier": "1.18.2",
-    "ts-jest": "24.0.2",
-    "ts-node": "8.3.0",
-    "typescript": "3.5.2"
+    "@babel/core": "7.5.x",
+    "@babel/plugin-syntax-dynamic-import": "7.x",
+    "@types/babel__core": "7.1.x",
+    "@types/babel__traverse": "7.0.x",
+    "@types/jest": "24.0.x",
+    "@types/node": "12.6.x",
+    "jest": "24.8.x",
+    "prettier": "1.18.x",
+    "ts-jest": "24.0.x",
+    "ts-node": "8.3.x",
+    "typescript": "3.5.x"
   },
-  "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "@babel/traverse": "7.4.5",
-    "@babel/types": "7.4.4",
-    "@types/babel__traverse": "7.0.7"
+  "peerDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "7.x",
+    "@babel/traverse": "7.x",
+    "@babel/types": "7.x"
   },
   "jest": {
     "testEnvironment": "node",
@@ -48,5 +49,18 @@
       "<rootDir>"
     ],
     "testRegex": ".*/__tests__/.+\\.(test|spec)\\.(ts|tsx)$"
-  }
+  },
+  "description": "[![Build Status](https://img.shields.io/travis/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://travis-ci.org/morlay/babel-plugin-pure-calls-annotation) [![NPM](https://img.shields.io/npm/v/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation) [![Dependencies](https://img.shields.io/david/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-pure-calls-annotation) [![License](https://img.shields.io/npm/l/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation)",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morlay/babel-plugin-pure-calls-annotation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morlay/babel-plugin-pure-calls-annotation/issues"
+  },
+  "homepage": "https://github.com/morlay/babel-plugin-pure-calls-annotation#readme"
 }
