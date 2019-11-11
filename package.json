@@ -21,7 +21,7 @@
     "@types/babel__core": "7.1.x",
     "@types/babel__traverse": "7.0.x",
     "@types/jest": "24.0.x",
-    "@types/node": "12.6.x",
+    "@types/node": "12.12.x",
     "jest": "24.8.x",
     "prettier": "1.18.x",
     "ts-jest": "24.0.x",
