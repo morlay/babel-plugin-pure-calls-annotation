@@ -16,7 +16,7 @@
     "prepare": "npm test && npm run build"
   },
   "devDependencies": {
-    "@babel/core": "7.5.x",
+    "@babel/core": "7.8.x",
     "@babel/plugin-syntax-dynamic-import": "7.x",
     "@types/babel__core": "7.1.x",
     "@types/babel__traverse": "7.0.x",
