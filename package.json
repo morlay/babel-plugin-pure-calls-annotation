@@ -24,7 +24,7 @@
     "@types/node": "12.6.x",
     "jest": "24.8.x",
     "prettier": "1.18.x",
-    "ts-jest": "24.0.x",
+    "ts-jest": "25.2.x",
     "ts-node": "8.3.x",
     "typescript": "3.5.x"
   },
