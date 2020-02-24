@@ -31,6 +31,32 @@ const B = /*#__PURE__*/String("b");`,
     dest: `fn()()();`,
   },
   {
+    title: "Skip annotated #__PURE__ when with variable used in param callback",
+    src: `const a = setInterval(() => { console.log(a) }, 1000)`,
+    dest: `const a = setInterval(() => { console.log(a) }, 1000)`,
+  },
+  {
+    title: "Skip annotated #__PURE__ when with variable used in param callback",
+    src: `const a = s$.pipe().subscribe(() => { a.subscribe() }, 1000)`,
+    dest: `const a = s$.pipe().subscribe(() => { a.subscribe() }, 1000)`,
+  },
+  {
+    title: "Annotated #__PURE__ when with variable not used in param callback",
+    src: `const a = /*#__PURE__*/setInterval(() => { }, 1000)`,
+    dest: `const a = /*#__PURE__*/setInterval(() => { }, 1000)`,
+  },
+  {
+    title: "Annotated #__PURE__ when with variable not used in param callback",
+    src: `const b = 1; const a = /*#__PURE__*/setInterval(() => { console.log(b) }, 1000)`,
+    dest: `const b = 1; const a = /*#__PURE__*/setInterval(() => { console.log(b) }, 1000)`,
+  },
+  {
+    title:
+      "Annotated #__PURE__ when with variable used in param callback in assignment expression",
+    src: `let a; a = /*#__PURE__*/setInterval(() => { console.log(a) }, 1000)`,
+    dest: `let a; a = /*#__PURE__*/setInterval(() => { console.log(a) }, 1000)`,
+  },
+  {
     title: "Skip annotated #__PURE__ when already have",
     src: `const A = /*#__PURE__*/String("a");`,
     dest: `const A = /*#__PURE__*/String("a");`,

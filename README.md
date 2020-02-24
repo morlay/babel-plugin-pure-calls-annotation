@@ -16,7 +16,7 @@ for uglyfiy and tree shaking
 
 Will transform
 
-```js
+```typescript
 export const call = (s) => {
   return "call" + s
 }
@@ -27,11 +27,21 @@ export const stringB = (() => call("b"))()
 
 to
 
-```js
+```typescript
 export const call = (s) => {
   return "call" + s
 }
 
 export const stringA = /*#__PURE__*/call("a")
 export const stringB = /*#__PURE__*/(() => call("b"))()
+```
+
+Notice:
+
+code like below will not be pure call
+
+```typescript
+const a = setInterval(() => { 
+  console.log(a) 
+}, 1000)
 ```

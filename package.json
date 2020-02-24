@@ -54,7 +54,6 @@
   "directories": {
     "lib": "lib"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morlay/babel-plugin-pure-calls-annotation.git"
