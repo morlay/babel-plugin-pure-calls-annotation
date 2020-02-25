@@ -86,6 +86,26 @@ const B = /*#__PURE__*/String("b");`,
     src: `export const A = fn(fn())`,
     dest: `export const A = /*#__PURE__*/fn( /*#__PURE__*/fn());`,
   },
+  {
+    title: "Annotated #__PURE__ for undefined fn(0)",
+    src: `export const one = fn(0);`,
+    dest: `export const one = /*#__PURE__*/fn(0);`,
+  },
+  {
+    title: "Annotated #__PURE__ for defined fn(0)",
+    src: `const fn = (x) => x; export const one = fn(0);`,
+    dest: `const fn = (x) => x; export const one = /*#__PURE__*/fn(0);`,
+  },
+  {
+    title: "Annotated #__PURE__ for undefined add(0, 1)",
+    src: `export const one = add(0, 1);`,
+    dest: `export const one = /*#__PURE__*/add(0, 1);`,
+  },
+  {
+    title: "Annotated #__PURE__ for defined add(0, 1)",
+    src: `const add = (x, y) => x + y; export const one = add(0, 1);`,
+    dest: `const add = (x, y) => x + y; export const one = /*#__PURE__*/add(0, 1);`,
+  },
 ];
 
 function unPad(str: string) {
