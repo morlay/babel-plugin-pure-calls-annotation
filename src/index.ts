@@ -1,8 +1,10 @@
 import { NodePath } from "@babel/traverse";
 import {
+  ArrowFunctionExpression,
   CallExpression,
   Comment,
   CommentBlock,
+  FunctionExpression,
   Identifier,
 } from "@babel/types";
 
@@ -24,25 +26,35 @@ const createComponentBlock = (value: string): Comment =>
     value,
   } as CommentBlock);
 
-const isVariableUsedInCallback = (nodePath: NodePath<any>) => {
+const isVariableUsedInCallback = (nodePath: NodePath<CallExpression>) => {
   let used = false;
 
   const scope = nodePath.parentPath.scope;
 
+  const traverseReferencedIdentifier = (nodePath: NodePath<any>) =>
+    nodePath.traverse({
+      ReferencedIdentifier(n: NodePath<Identifier>) {
+        if (scope.hasOwnBinding(n.node.name)) {
+          used = true;
+        }
+      },
+    } as any);
+
   nodePath.traverse({
-    ReferencedIdentifier(n: NodePath<Identifier>) {
-      if (scope.hasOwnBinding(n.node.name)) {
-        used = true;
-      }
+    ArrowFunctionExpression: (nodePath: NodePath<ArrowFunctionExpression>) => {
+      traverseReferencedIdentifier(nodePath);
     },
-  } as any);
+    FunctionExpression: (nodePath: NodePath<FunctionExpression>) => {
+      traverseReferencedIdentifier(nodePath);
+    },
+  });
 
   return used;
 };
 
 const isPureCall = (nodePath: NodePath<CallExpression>) => {
   if (nodePath.parentPath.isAssignmentExpression()) {
-    return nodePath;
+    return true;
   }
 
   if (nodePath.parentPath.isVariableDeclarator()) {
