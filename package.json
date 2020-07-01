@@ -20,7 +20,7 @@
     "@babel/plugin-syntax-dynamic-import": "7.x",
     "@types/babel__core": "7.1.x",
     "@types/babel__traverse": "7.0.x",
-    "@types/jest": "25.1.x",
+    "@types/jest": "26.0.x",
     "@types/node": "13.7.x",
     "jest": "25.1.x",
     "prettier": "1.19.x",
