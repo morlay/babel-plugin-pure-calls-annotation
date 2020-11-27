@@ -23,7 +23,7 @@
     "@types/jest": "25.1.x",
     "@types/node": "13.7.x",
     "jest": "25.1.x",
-    "prettier": "1.19.x",
+    "prettier": "2.2.x",
     "ts-jest": "25.2.x",
     "ts-node": "8.6.x",
     "typescript": "3.8.x"
