@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pure-calls-annotation",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "main": "lib/index.js",
   "types": "src/index.ts",
   "files": [
@@ -13,7 +13,6 @@
     "fmt": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
     "build": "tsc",
     "test": "npm run fmt && jest",
-    "postinstall": "npm test && npm run build",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
