@@ -1,6 +1,5 @@
 ## babel-plugin-pure-calls-annotation
 
-[![Build Status](https://img.shields.io/travis/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://travis-ci.org/morlay/babel-plugin-pure-calls-annotation)
 [![NPM](https://img.shields.io/npm/v/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation)
 [![Dependencies](https://img.shields.io/david/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-pure-calls-annotation)
 [![License](https://img.shields.io/npm/l/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation)

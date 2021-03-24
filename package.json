@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pure-calls-annotation",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "main": "lib/index.js",
   "types": "src/index.ts",
   "files": [
@@ -13,22 +13,23 @@
     "fmt": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
     "build": "tsc",
     "test": "npm run fmt && jest",
-    "prepare": "npm test && npm run build"
+    "postinstall": "npm test && npm run build",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@babel/core": "7.8.x",
+    "@babel/core": "7.x",
     "@babel/plugin-syntax-dynamic-import": "7.x",
-    "@types/babel__core": "7.1.x",
-    "@types/babel__traverse": "7.0.x",
-    "@types/jest": "25.1.x",
-    "@types/node": "13.7.x",
-    "jest": "25.1.x",
-    "prettier": "1.19.x",
-    "ts-jest": "25.2.x",
-    "ts-node": "8.6.x",
-    "typescript": "3.8.x"
+    "@types/babel__core": "7.x",
+    "@types/babel__traverse": "7.x",
+    "@types/jest": "26.x",
+    "@types/node": "14.x",
+    "jest": "26.x",
+    "prettier": "2.x",
+    "ts-jest": "26.x",
+    "ts-node": "9.x",
+    "typescript": "4.x"
   },
-  "peerDependencies": {
+  "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "7.x",
     "@babel/traverse": "7.x",
     "@babel/types": "7.x"
@@ -50,7 +51,6 @@
     ],
     "testRegex": ".*/__tests__/.+\\.(test|spec)\\.(ts|tsx)$"
   },
-  "description": "[![Build Status](https://img.shields.io/travis/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://travis-ci.org/morlay/babel-plugin-pure-calls-annotation) [![NPM](https://img.shields.io/npm/v/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation) [![Dependencies](https://img.shields.io/david/morlay/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://david-dm.org/morlay/babel-plugin-pure-calls-annotation) [![License](https://img.shields.io/npm/l/babel-plugin-pure-calls-annotation.svg?style=flat-square)](https://npmjs.org/package/babel-plugin-pure-calls-annotation)",
   "directories": {
     "lib": "lib"
   },
