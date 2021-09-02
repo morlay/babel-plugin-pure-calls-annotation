@@ -12,26 +12,26 @@
   "scripts": {
     "fmt": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
     "build": "tsc",
-    "test": "npm run fmt && jest",
+    "test": "npm run fmt && jest --coverage",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@babel/core": "7.x",
+    "@babel/core": "~7.15.0",
     "@babel/plugin-syntax-dynamic-import": "7.x",
-    "@types/babel__core": "7.x",
-    "@types/babel__traverse": "7.x",
-    "@types/jest": "26.x",
-    "@types/node": "14.x",
-    "jest": "26.x",
-    "prettier": "2.x",
-    "ts-jest": "26.x",
-    "ts-node": "9.x",
-    "typescript": "4.x"
+    "@types/babel__core": "~7.1.15",
+    "@types/babel__traverse": "~7.14.2",
+    "@types/jest": "~27.0.1",
+    "@types/node": "~16.7.10",
+    "jest": "~27.1.0",
+    "prettier": "~2.3.2",
+    "ts-jest": "~27.0.5",
+    "ts-node": "~10.2.1",
+    "typescript": "~4.4.2"
   },
   "dependencies": {
-    "@babel/plugin-syntax-dynamic-import": "7.x",
-    "@babel/traverse": "7.x",
-    "@babel/types": "7.x"
+    "@babel/plugin-syntax-dynamic-import": "~7.8.3",
+    "@babel/traverse": "~7.15.0",
+    "@babel/types": "~7.15.0"
   },
   "jest": {
     "testEnvironment": "node",

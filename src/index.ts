@@ -11,9 +11,6 @@ import {
 const PURE_ANNOTATION = "#__PURE__";
 
 const isPureAnnotated = (comments: ReadonlyArray<Comment> | null): boolean => {
-  if (typeof comments === "undefined") {
-    return false;
-  }
   if (comments && comments.length > 0) {
     return comments[comments.length - 1].value === PURE_ANNOTATION;
   }
