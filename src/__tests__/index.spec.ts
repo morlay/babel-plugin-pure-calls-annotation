@@ -77,6 +77,11 @@ const B = /*#__PURE__*/String("b");`,
     dest: `export const A = /*#__PURE__*/(() => "a")();`,
   },
   {
+    title: "Annotated #__PURE__ for IIFE should not deep walk body",
+    src: `export const A = (() => call("b"))();`,
+    dest: `export const A = /*#__PURE__*/(() => call("b"))();`,
+  },
+  {
     title: "Annotated #__PURE__ for import()",
     src: `export const A = import("")`,
     dest: `export const A = /*#__PURE__*/import("");`,
