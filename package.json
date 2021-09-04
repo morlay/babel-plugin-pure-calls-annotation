@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pure-calls-annotation",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "lib/index.js",
   "types": "src/index.ts",
   "files": [
