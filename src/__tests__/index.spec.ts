@@ -82,6 +82,11 @@ const B = /*#__PURE__*/String("b");`,
     dest: `export const A = /*#__PURE__*/(function () { return "a" })();`,
   },
   {
+    title: "Annotated #__PURE__ for defined add(0, 1) called in IIFE",
+    src: `const add = (x, y) => x + y; export const one = (() => add(0, 1))();`,
+    dest: `const add = (x, y) => x + y; export const one = /*#__PURE__*/(() => add(0, 1))();`,
+  },
+  {
     title: "Annotated #__PURE__ for IIFE should not deep walk body",
     src: `export const A = (() => call("b"))();`,
     dest: `export const A = /*#__PURE__*/(() => call("b"))();`,
@@ -110,6 +115,21 @@ const B = /*#__PURE__*/String("b");`,
     title: "Annotated #__PURE__ for undefined add(0, 1)",
     src: `export const one = add(0, 1);`,
     dest: `export const one = /*#__PURE__*/add(0, 1);`,
+  },
+  {
+    title: "Annotated #__PURE__ for pure call as parameter",
+    src: `export const one = add(0, add(0, 1));`,
+    dest: `export const one = /*#__PURE__*/add(0, /*#__PURE__*/add(0, 1));`,
+  },
+  {
+    title: "Annotated #__PURE__ for pure call as array item",
+    src: `([add(0,1)]);`,
+    dest: `([/*#__PURE__*/add(0,1)]);`,
+  },
+  {
+    title: "Annotated #__PURE__ for pure call as object property",
+    src: `({ x: add(0,1) })`,
+    dest: `({ x: /*#__PURE__*/add(0,1) })`,
   },
   {
     title: "Annotated #__PURE__ for defined add(0, 1)",

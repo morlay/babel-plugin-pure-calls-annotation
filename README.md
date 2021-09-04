@@ -6,7 +6,7 @@
 [![dep](https://img.shields.io/librariesio/release/npm/babel-plugin-pure-calls-annotation?style=flat-square)](https://libraries.io/github/morlay/babel-plugin-pure-calls-annotation)
 
 Automated annotate **`/*#__PURE__*/`** to call expression which in **variable declarator**,
-**assignment expression** and **arguments of call expression**
+**assignment expression**, **arguments of call expression** and other expressions as values
 
 ### Purpose
 

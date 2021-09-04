@@ -10,10 +10,7 @@
   "license": "WTFPL",
   "author": "Morlay Null <morlay.null@gmail.com>",
   "scripts": {
-    "fmt": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
-    "build": "tsc",
-    "test": "npm run fmt && jest --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "make build"
   },
   "devDependencies": {
     "@babel/core": "~7.15.0",
